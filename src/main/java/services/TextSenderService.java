@@ -37,7 +37,7 @@ public class TextSenderService {
 
         try {
             bot.execute(photo);
-        } catch (TelegramApiException _) {
+        } catch (TelegramApiException e) {
             sendText(userId, "Ошибка при отправке фото");
         }
     }
@@ -63,7 +63,7 @@ public class TextSenderService {
         Message loadingMsg;
         try {
             loadingMsg = bot.execute(loading);
-        } catch (TelegramApiException _) {
+        } catch (TelegramApiException e) {
             task.run();
             return;
         }
@@ -73,7 +73,7 @@ public class TextSenderService {
         } finally {
             try {
                 deleteText(loadingMsg);
-            } catch (TelegramApiException _) {
+            } catch (TelegramApiException e) {
             }
         }
     }
